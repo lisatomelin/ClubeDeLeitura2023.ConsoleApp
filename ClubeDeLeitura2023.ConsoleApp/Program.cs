@@ -17,8 +17,7 @@ namespace ClubeDeLeitura2023.ConsoleApp
             repositorioCaixa.Inserir(caixa);
 
             TelaCaixa telaCaixa = new TelaCaixa();
-            telaCaixa.MostrarCaixas(repositorioCaixa);
-
+            
 
             Revista revista = new Revista();
             revista.colecao = "Turma da Mônica";
@@ -29,7 +28,7 @@ namespace ClubeDeLeitura2023.ConsoleApp
             repositorioRevista.Inserir(revista);
 
             TelaRevista telaRevista = new TelaRevista();
-            telaRevista.MostrarRevistas(repositorioRevista);
+            
 
             Amigo amigo = new Amigo();
             amigo.id = 1;
@@ -43,7 +42,7 @@ namespace ClubeDeLeitura2023.ConsoleApp
             repositorioAmigo.Inserir(amigo);
 
             TelaAmigo telaAmigo = new TelaAmigo();
-            telaAmigo.MostrarAmigos(repositorioAmigo);
+            
 
             Emprestimo emprestimo = new Emprestimo();
             emprestimo.id = 1;
@@ -54,7 +53,7 @@ namespace ClubeDeLeitura2023.ConsoleApp
             repositorioEmprestimo.Inserir(emprestimo);
 
             TelaEmprestimo telaEmprestimo = new TelaEmprestimo();
-            telaEmprestimo.MostrarEmprestimos(repositorioEmprestimo);
+            
 
 
             while (true)
@@ -85,9 +84,11 @@ namespace ClubeDeLeitura2023.ConsoleApp
                     {
                         continue;
                     }
+                    Console.ReadLine();
 
                 }
-                Console.ReadLine();
+                
+
 
                 if (opcao == "2")
                 {
@@ -111,9 +112,10 @@ namespace ClubeDeLeitura2023.ConsoleApp
                         continue;
 
                     }
+                    Console.ReadLine();
 
                 }
-                Console.ReadLine();
+                
 
                 if (opcao == "3")
                 {
@@ -126,7 +128,7 @@ namespace ClubeDeLeitura2023.ConsoleApp
                     {
                         telaRevista.InserirNovaRevista(revista);
                     }
-                    if (opcaoCadastroRevista == "1")
+                    if (opcaoCadastroRevista == "2")
                     {
                         telaRevista.MostrarRevistas(repositorioRevista);
                     }
@@ -135,9 +137,10 @@ namespace ClubeDeLeitura2023.ConsoleApp
                         continue;
 
                     }
+                    Console.ReadLine();
 
                 }
-                Console.ReadLine();
+                
 
                 if (opcao == "4")
                 {
@@ -159,8 +162,9 @@ namespace ClubeDeLeitura2023.ConsoleApp
                         continue;
 
                     }
+                    Console.ReadLine();
                 }
-                Console.ReadLine();
+                
 
                 
             }
