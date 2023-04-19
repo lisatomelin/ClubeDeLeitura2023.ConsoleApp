@@ -2,12 +2,12 @@
 {
     public class Emprestimo
     {
+        public int id;
         public string nome;
-        public string revista;
         public int dataEmprestimo;
         public int dataDevolucao;
-        public int id;
         public Amigo amigo;
-      
+        public Revista revista;
+
     }
 }

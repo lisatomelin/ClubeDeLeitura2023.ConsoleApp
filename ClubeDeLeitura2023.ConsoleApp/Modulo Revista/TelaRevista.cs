@@ -12,13 +12,17 @@ namespace ClubeDeLeitura2023.ConsoleApp
 
             Console.WriteLine();
 
-            Console.WriteLine("Cadastro Revista");
+            Console.WriteLine("Cadastro Revista \n");
 
             Console.WriteLine();
 
-            Console.WriteLine("Digite 1 para Inserir um Novo Cadastro de Revista");
+            Console.WriteLine("Digite 1 para Inserir um Cadastro de Revista");
 
             Console.WriteLine("Digite 2 para Visulizar Revistas");
+
+            Console.WriteLine("Digite 3 para Editar uma Revista");
+
+            Console.WriteLine("Digite 4 para Excluir uma Revista");
 
             Console.WriteLine();
 
@@ -34,7 +38,6 @@ namespace ClubeDeLeitura2023.ConsoleApp
             RepositorioRevista repositorioRevista = new RepositorioRevista();
             repositorioRevista.Inserir(revista);
 
-            MostrarCabecalho("Cadastro de Revistas", "Inserindo Nova Revista: ");
             ApresentarMensagem("Revista inserida com sucesso!", ConsoleColor.Green);
 
             Console.ReadLine();
@@ -50,6 +53,16 @@ namespace ClubeDeLeitura2023.ConsoleApp
                 Console.WriteLine(r.id + ", " + r.colecao + ", " + r.caixa.etiqueta);
             }
             Console.ReadKey();
+        }
+
+        public void EditarRevistas(object repositorioRevista)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ExluirRevistas(object repositorioRevista)
+        {
+            throw new NotImplementedException();
         }
     }
 }

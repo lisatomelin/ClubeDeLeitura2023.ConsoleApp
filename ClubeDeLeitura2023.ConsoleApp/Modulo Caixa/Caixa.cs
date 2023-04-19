@@ -6,5 +6,15 @@
         public string cor;
         public string etiqueta;
 
+        public Caixa() 
+        {
+        }
+
+        public Caixa(string cor, string etiqueta)
+        {
+            this.cor = cor;
+            this.etiqueta = etiqueta;
+        }
+
     }
 }

@@ -15,13 +15,17 @@ namespace ClubeDeLeitura2023.ConsoleApp
 
             Console.WriteLine();
 
-            Console.WriteLine("Cadastro e Amigos");
+            Console.WriteLine("Cadastro e Amigos \n");
 
             Console.WriteLine();
 
-            Console.WriteLine("Digite 1 para Inserir um Novo Cadastro de Amigo");
+            Console.WriteLine("Digite 1 para Inserir um Cadastro de Amigo");
 
             Console.WriteLine("Digite 2 para Visulizar Amigos");
+
+            Console.WriteLine("Digite 3 para Editar um Amigo");
+
+            Console.WriteLine("Digite 4 para Excluir um Amigo");
 
             Console.WriteLine();
 
@@ -50,8 +54,18 @@ namespace ClubeDeLeitura2023.ConsoleApp
         {
             RepositorioAmigo repositorioAmigo = new RepositorioAmigo();
             repositorioAmigo.Inserir(amigo);
-            MostrarCabecalho("Cadastro de Amigos", "Inserindo Novo Amigo: ");
+            //MostrarCabecalho("Cadastro de Amigos", "Inserindo Novo Amigo: ");
             ApresentarMensagem("Amigo inserido com sucesso!", ConsoleColor.Green);
+        }
+
+        public void EditarAmigo(object repositorioAmigo)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ExcluirAmigo(object repositorioAmigo)
+        {
+            throw new NotImplementedException();
         }
     }
 }
