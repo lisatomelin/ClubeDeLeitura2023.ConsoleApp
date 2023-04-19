@@ -5,29 +5,49 @@ namespace ClubeDeLeitura2023.ConsoleApp
 {
     public class RepositorioAmigo : RepositorioMae
     {
+        private int contadorAmigos = 0;
         public void Inserir(Amigo amigo)
         {
+            
+            contadorAmigos++;
+
+            amigo.id = contadorAmigos;
+
             listaRegistros.Add(amigo);
+
+            
         }
         public ArrayList SelecionarTodos()
         {
             return listaRegistros;
         }
-        public Amigo SelecionarPorNome(string nome)
+   
+        public void Editar(int id, Amigo amigoAtualizado)
         {
-            Amigo amigo = null;
-
-            foreach (Amigo a in listaRegistros)
+            foreach(Amigo a in listaRegistros)
             {
-                if (a.nome == nome)
+                if (a.id == id)
                 {
-                    amigo = a;
+                    a.id = amigoAtualizado.id;
+                    a.nome = amigoAtualizado.nome;
                     break;
                 }
             }
+        }
 
-            return amigo;
+        public void Excluir(int id)
+        {
+            Amigo amigoSelecionado = null;
 
+            foreach (Amigo a in listaRegistros)
+            {
+                if (a.id == id)
+                {
+                    amigoSelecionado = a;
+                    break;
+                }
+            }
+            listaRegistros.Remove(amigoSelecionado);
 
         }
     }

@@ -5,7 +5,7 @@ namespace ClubeDeLeitura2023.ConsoleApp
 {
     public class TelaCaixa : Tela
     {
-        RepositorioCaixa repositorioCaixa = new RepositorioCaixa();
+        //RepositorioCaixa repositorioCaixa = new RepositorioCaixa();
         public string ApresentarMenuCadastroCaixa()
         {
             Console.Clear();
@@ -35,10 +35,9 @@ namespace ClubeDeLeitura2023.ConsoleApp
 
         public void InserirNovaCaixa(Caixa caixa)
         {
-
-            ObterCaixa();
-
+            RepositorioCaixa repositorioCaixa = new RepositorioCaixa();
             repositorioCaixa.Inserir(caixa);
+            ObterCaixa();
 
             MostrarCabecalho("Inserindo uma nova Caixa...", ConsoleColor.Blue);
 
@@ -59,7 +58,6 @@ namespace ClubeDeLeitura2023.ConsoleApp
 
             Console.ReadLine();
 
-
         }
 
         public void EditarCaixas(RepositorioCaixa repositorioCaixa)
@@ -77,15 +75,14 @@ namespace ClubeDeLeitura2023.ConsoleApp
         {
             MostrarCabecalho("Excluindo uma caixa já cadastrada", ConsoleColor.Blue);
 
-            MostrarCabecalho("Editando uma caixa já cadastrada", ConsoleColor.Blue);
-
             Console.WriteLine("Digite o id da caixa: ");
             int id = Convert.ToInt32(Console.ReadLine());
 
             Caixa caixaAtualizada = ObterCaixa();
 
-            repositorioCaixa.Excluir(id);        }
+            repositorioCaixa.Excluir(id);
 
+        }          
         private Caixa ObterCaixa()
         {
             Console.WriteLine("Digite a cor:");
@@ -101,13 +98,13 @@ namespace ClubeDeLeitura2023.ConsoleApp
         }
         private void ApresentarTabela(ArrayList caixas)
         {
-            Console.WriteLine("{0, -10} | {1, -10} | {1, -10} | {2, -20}", "Id", "Etiqueta", "Cor");
+            Console.WriteLine("{0, -10} | {1, -10} | {2, -10}", "Id", "Etiqueta", "Cor");
 
             Console.WriteLine("--------------------------------------------------------------------");
 
             foreach (Caixa caixa in caixas)
             {
-                Console.WriteLine("{0, -10} | {1, -10} | {1, -10} | {2, -20}", caixa.id, caixa.etiqueta, caixa.cor);
+                Console.WriteLine("{0, -10} | {1, -10}  | {2, -10}", caixa.id, caixa.etiqueta, caixa.cor);
             }
         }
     }

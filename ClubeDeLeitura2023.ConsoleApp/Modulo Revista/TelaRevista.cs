@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using ClubeDeLeitura2023.ConsoleApp.Compartilhado;
 
 namespace ClubeDeLeitura2023.ConsoleApp
@@ -38,6 +39,8 @@ namespace ClubeDeLeitura2023.ConsoleApp
             RepositorioRevista repositorioRevista = new RepositorioRevista();
             repositorioRevista.Inserir(revista);
 
+            ObterRevista();
+
             ApresentarMensagem("Revista inserida com sucesso!", ConsoleColor.Green);
 
             Console.ReadLine();
@@ -48,21 +51,64 @@ namespace ClubeDeLeitura2023.ConsoleApp
 
             ArrayList revistas = repositorioRevista.SelecionarTodos();
 
-            foreach (Revista r in revistas)
+            MostrarCabecalho("Visualizando revistas...", ConsoleColor.Blue);
+
+            ApresentarTabela(revistas);
+
+            Console.ReadLine();
+        }
+
+        public void EditarRevistas(RepositorioRevista repositorioRevista)
+        {
+            MostrarCabecalho("Editando uma revista já cadastrada", ConsoleColor.Blue);
+
+            Console.WriteLine("Digite o id da revista: ");
+            int id = Convert.ToInt32(Console.ReadLine());
+
+            Revista revistaAtualizada = ObterRevista();
+
+            repositorioRevista.Editar(id, revistaAtualizada);
+        }
+
+        public void ExluirRevistas(RepositorioRevista repositorioRevista)
+        {
+            MostrarCabecalho("Excluindo uma revista já cadastrada", ConsoleColor.Blue);
+
+            Console.WriteLine("Digite o id da revista: ");
+            int id = Convert.ToInt32(Console.ReadLine());
+
+            Revista revistaAtualizada = ObterRevista();
+
+            repositorioRevista.Excluir(id);
+        }
+
+        private Revista ObterRevista()
+        {
+            Console.WriteLine("Digite id:");
+            int id = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Digite o ano da revista:");
+            int ano = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Digite a coleção da Revista: ");
+            string colecao = Console.ReadLine();
+
+            Revista revista = new Revista(id, ano, colecao);
+
+            return revista;
+
+        }
+
+        private void ApresentarTabela(ArrayList revistas)
+        {
+            Console.WriteLine("{0, -10} | {1, -10} | {2, -10}", "Id", "Caixa - Etiqueta", "Coleção");
+
+            Console.WriteLine("--------------------------------------------------------------------");
+
+            foreach (Revista revista in revistas)
             {
-                Console.WriteLine(r.id + ", " + r.colecao + ", " + r.caixa.etiqueta);
+                Console.WriteLine("{0, -10} | {1, -10}  | {2, -10}", revista.id, revista.caixa.etiqueta, revista.colecao);
             }
-            Console.ReadKey();
-        }
-
-        public void EditarRevistas(object repositorioRevista)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void ExluirRevistas(object repositorioRevista)
-        {
-            throw new NotImplementedException();
         }
     }
 }

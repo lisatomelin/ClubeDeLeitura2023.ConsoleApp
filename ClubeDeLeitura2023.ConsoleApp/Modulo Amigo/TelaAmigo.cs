@@ -41,32 +41,85 @@ namespace ClubeDeLeitura2023.ConsoleApp
         {
             ArrayList amigos = repositorioAmigo.SelecionarTodos();
 
-            foreach (Amigo a in amigos)
-            {
-                Console.WriteLine(a.id + ", " + a.nomeResponsavel + ", " + a.nome);
+            ApresentarTabela(amigos);
 
-                Console.ResetColor();
-            }
-            Console.ReadKey();
+            
         }
 
         public void InserirNovoAmigo(Amigo amigo)
         {
             RepositorioAmigo repositorioAmigo = new RepositorioAmigo();
+
+            ObterAmigo();
+
             repositorioAmigo.Inserir(amigo);
-            //MostrarCabecalho("Cadastro de Amigos", "Inserindo Novo Amigo: ");
+
+            MostrarCabecalho("Inserindo um novo Amigo...", ConsoleColor.Blue);
+
+            MostrarAmigos(repositorioAmigo);
+
             ApresentarMensagem("Amigo inserido com sucesso!", ConsoleColor.Green);
+
+            Console.ReadLine();
+
         }
 
-        public void EditarAmigo(object repositorioAmigo)
+
+        public void EditarAmigo(RepositorioAmigo repositorioAmigo)
         {
-            throw new NotImplementedException();
+            MostrarCabecalho("Editando um Amigo já cadastrado", ConsoleColor.Blue);
+
+            Console.WriteLine("Digite o id do Amigo: ");
+            int id = Convert.ToInt32(Console.ReadLine());
+
+            Amigo amigoAtualizado = ObterAmigo();
+
+            repositorioAmigo.Editar(id, amigoAtualizado);
         }
 
-        public void ExcluirAmigo(object repositorioAmigo)
+        public void ExcluirAmigo(RepositorioAmigo repositorioAmigo)
         {
-            throw new NotImplementedException();
+            MostrarCabecalho("Excluindo uma caixa já cadastrada", ConsoleColor.Blue);
+
+            MostrarCabecalho("Editando uma caixa já cadastrada", ConsoleColor.Blue);
+
+            Console.WriteLine("Digite o id da caixa: ");
+            int id = Convert.ToInt32(Console.ReadLine());
+
+            Amigo amigoAtualizada = ObterAmigo();
+
+            repositorioAmigo.Excluir(id);
         }
+
+
+        private Amigo ObterAmigo()
+        {
+            Console.WriteLine("Digite o nome:");
+            string nome = Console.ReadLine();
+
+            Console.WriteLine("Digite o telefone:");
+            string telefone = Console.ReadLine();
+
+            Amigo amigo = new Amigo(nome, telefone);
+
+            return amigo;
+
+        }
+
+        private void ApresentarTabela(ArrayList amigos)
+        {
+            Console.WriteLine("{0, -10} | {1, -10} | {2, -10}", "Id", "Nome", "Telefone");
+
+            Console.WriteLine("--------------------------------------------------------------------");
+
+            foreach (Amigo amigo in amigos)
+            {
+                Console.WriteLine("{0, -10} | {1, -10} | {2, -10}", amigo.id, amigo.nome, amigo.telefone);
+            }
+            Console.ReadLine();
+        }
+
+
     }
 }
 

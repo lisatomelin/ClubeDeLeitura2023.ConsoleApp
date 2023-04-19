@@ -53,8 +53,8 @@ namespace ClubeDeLeitura2023.ConsoleApp
             
         }
 
-        internal void Excluir(int id)
-        {
+       public void Excluir(int id)
+       {
             Caixa caixaSelecionada = null;
 
             foreach (Caixa c in listaRegistros)
@@ -66,6 +66,6 @@ namespace ClubeDeLeitura2023.ConsoleApp
                 }
             }
             listaRegistros.Remove(caixaSelecionada);
-        }
+       }
     }
 }
